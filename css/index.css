@@ -1,0 +1,17 @@
+/* css/index.css */
+
+/* Custom Utilities para sa Homepage */
+
+.chiseled-edge {
+    box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1);
+}
+
+.bento-grid {
+    display: grid;
+    gap: 1px;
+    background-color: #444748; 
+}
+
+.bento-item {
+    background-color: #131313; 
+}

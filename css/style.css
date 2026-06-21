@@ -1,9 +1,9 @@
-/* css/style.css */
+/* css/global.css */
 
 /* 1. I-import Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Inter:wght@400;600&family=Geist:wght@400;500&display=swap');
 
-/* 2. I-declare ang Global Variables sa :root */
+/* 2. Global Variables (Shared sa buong project) */
 :root {
     /* Color Palette */
     --color-primary: #C0C0C0;
@@ -22,10 +22,13 @@
     --font-label: 'Geist', sans-serif;
 }
 
+/* 3. Base Styles (Applicable sa lahat ng pages) */
 body {
     background-color: var(--color-bg-dark);
-    color: var(--color-primary);
-    font-family: var(--font-body);
-    margin: 0;
-    padding: 20px;
+    cursor: crosshair;
+}
+
+/* Global Icon Settings */
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
 }
