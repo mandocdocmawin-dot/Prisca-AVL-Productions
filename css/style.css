@@ -1,0 +1,31 @@
+/* css/style.css */
+
+/* 1. I-import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;700&family=Inter:wght@400;600&family=Geist:wght@400;500&display=swap');
+
+/* 2. I-declare ang Global Variables sa :root */
+:root {
+    /* Color Palette */
+    --color-primary: #C0C0C0;
+    --color-secondary: #121212;
+    --color-tertiary: #4A4A4A;
+    --color-neutral: #1E1E1E;
+    
+    /* Backgrounds at Card accents */
+    --color-bg-dark: #0A0A0A;
+    --color-card-bg: #161616;
+    --color-danger: #F87171; 
+
+    /* Typography / Fonts */
+    --font-headline: 'Hanken Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-label: 'Geist', sans-serif;
+}
+
+body {
+    background-color: var(--color-bg-dark);
+    color: var(--color-primary);
+    font-family: var(--font-body);
+    margin: 0;
+    padding: 20px;
+}
