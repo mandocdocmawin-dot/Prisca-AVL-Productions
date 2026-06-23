@@ -4,7 +4,6 @@ const modalHeader = document.getElementById('modalHeader');
 const modalBody = document.getElementById('modalBody');
 
 if (videoTrigger && videoModal) {
-    // Pagbukas ng Modal kapag pinindot ang video trigger card
     videoTrigger.addEventListener('click', function() {
         videoModal.classList.remove('opacity-0', 'pointer-events-none');
         videoModal.classList.add('opacity-100', 'pointer-events-auto');
@@ -20,7 +19,6 @@ if (videoTrigger && videoModal) {
         }
     });
 
-    // Pagsasara ng Modal
     const closeModalFunction = function() {
         videoModal.classList.remove('opacity-100', 'pointer-events-auto');
         videoModal.classList.add('opacity-0', 'pointer-events-none');
@@ -35,7 +33,6 @@ if (videoTrigger && videoModal) {
             modalBody.classList.add('opacity-0', 'scale-95');
         }
         
-        // Pinupwersa nitong i-refresh ang iframe para huminto ang sound ng video kapag sinara ang modal player
         const iframe = videoModal.querySelector('iframe');
         if (iframe) {
             const currentSrc = iframe.src;
@@ -55,3 +52,24 @@ if (videoTrigger && videoModal) {
         }
     });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+    const navContainer = document.getElementById('main-nav');
+    if (!navContainer) return;
+
+    const navLinks = navContainer.querySelectorAll('a');
+    const activeClasses = ['text-primary', 'dark:text-primary', 'border-b', 'border-primary', 'pb-1'];
+    const inactiveClasses = ['text-on-surface-variant', 'dark:text-on-surface-variant'];
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+            navLinks.forEach(item => {
+                item.classList.remove(...activeClasses);
+                item.classList.add(...inactiveClasses);
+            });
+
+            this.classList.remove(...inactiveClasses);
+            this.classList.add(...activeClasses);
+        });
+    });
+});
