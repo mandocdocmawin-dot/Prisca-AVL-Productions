@@ -18,6 +18,7 @@
     <script src="./src/js/documentaries.js" defer></script>
     <script src="./src/js/productions.js" defer></script>
     <script src="./src/js/commercials.js" defer></script>
+    <script src="./src/js/personal.js" defer></script>
 
     <link rel="stylesheet" href="./src/css/global.css">
     <link rel="stylesheet" href="./src/css/index.css">
@@ -278,20 +279,44 @@
                     </div>
 
                     <!-- Category 5: Motion Design -->
-                    <div class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 border-t border-outline-variant/20">
+                    <div id="personalTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 border-t border-outline-variant/20 cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Abstract 3D motion..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSEExgVbODjOGoRTLHzRldCKQeUE2eR5IzRga1Ki4yQjnW_huzbKnRYDddrfvEuTCaIznZJ1PWKvZEDdEbraq2RL8IDAKFNFm49zkDN7WEbPsNRr00wJU5CU3HygwcXc64nbuHlL7Dt7R5SvAqXYo-O88_8V4pEMUDU9Al371lehJibJbkk0y-mwva1KLrUSX8a67NJR39NYJB6dGue9mwDdcFEd_3Sk6_PG70-tGC80E7MClbHomYSWykXgW7pWKoOVvWitCkdUs">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
                         <div class="absolute inset-0 p-6 flex flex-col justify-between">
                             <span class="font-mono-technical text-xs text-primary-fixed self-end">[ 05 ]</span>
                             <div>
-                                <h3 class="font-headline-md text-xl text-primary mb-0.5 uppercase tracking-wide">Motion Design</h3>
-                                <p class="font-mono-technical text-xs text-on-surface-variant uppercase tracking-wider">2D / 3D Animation</p>
+                                <h3 class="font-headline-md text-xl text-primary mb-0.5 uppercase tracking-wide">Personal Videos</h3>
+                                <p class="font-mono-technical text-xs text-on-surface-variant uppercase tracking-wider">Vlogs / Creative / Personal</p>
                             </div>
                         </div>
                         <div class="hover-overlay absolute bottom-0 left-0 w-full p-6 bg-surface-container-high/90 backdrop-blur-md border-t border-primary/20 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                             <p class="font-body-md text-sm text-on-surface mb-3">Integrating dynamic graphics, typography, and VFX to enhance visual storytelling.</p>
-                            <button class="font-label-caps text-xs text-primary flex items-center gap-2 group/btn">
-                                Explore Collection <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            <button class="font-label-caps text-xs text-primary flex items-center gap-2 group/btn pointer-events-none">
+                                Watch Gallery <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">play_arrow</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="personalModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-4 md:p-8">
+                        <div class="w-full max-w-[85vw] md:max-w-[70vw] flex justify-between items-center mb-3 opacity-0 scale-95 transition-all duration-500 delay-100" id="personalModalHeader">
+                            <div class="font-mono-technical text-sm text-primary-fixed tracking-wider flex items-center gap-2">
+                                <span class="material-symbols-outlined">movie</span>
+                                <span>// PERSONAL GALLERY <span id="personalCounter" class="text-on-surface-variant ml-2">[ 1 / 3 ]</span></span>
+                            </div>
+                            <button id="closePersonalModal" class="flex items-center gap-2 font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors bg-surface/40 border border-outline-variant/50 px-4 py-2 rounded-sm backdrop-blur-sm tracking-wider">
+                                <span class="hidden md:inline">// CLOSE GALLERY</span>
+                                <span class="material-symbols-outlined text-sm">close</span>
+                            </button>
+                        </div>
+                        <div class="w-full max-w-[85vw] md:max-w-[70vw] aspect-video relative z-10 border border-outline-variant/30 bg-black shadow-2xl opacity-0 scale-95 transition-all duration-500 delay-150 flex flex-col justify-between overflow-hidden rounded-sm" id="personalModalBody">
+                            <button id="prevPersonalBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-surface/50 border border-outline-variant/50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md text-on-surface hover:text-primary hover:border-primary transition-all">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <div class="w-full flex-1 min-h-0 bg-black relative flex items-center justify-center">
+                                <iframe id="personalIframe" src="" class="w-full h-full border-0 absolute inset-0 z-10" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                            <button id="nextPersonalBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-surface/50 border border-outline-variant/50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md text-on-surface hover:text-primary hover:border-primary transition-all">
+                                <span class="material-symbols-outlined">chevron_right</span>
                             </button>
                         </div>
                     </div>

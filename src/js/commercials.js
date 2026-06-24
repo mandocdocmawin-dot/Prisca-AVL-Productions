@@ -13,10 +13,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Mga placeholder links para sa Commercials (Palitan mo na lang ng Google Drive embedded preview link mamaya)
     const playlist = [
+        "https://drive.google.com/file/d/1MW-p9TBUrbg2LOYRDudGWbrNEwzchG15/preview",
         "https://drive.google.com/file/d/1RYJIHmx958ezsb9ugz77njTW1cmwZEti/preview",
         "https://drive.google.com/file/d/1Y41Yu79y6n49cSKLZgOP3F52LpMez1tr/preview",
         "https://drive.google.com/file/d/1R0SxT1dhrQd8d-t-Jo1rqb4dhgipMU5Z/preview",
-        "https://drive.google.com/file/d/1KCW1ZvI-Fnz4r-LQ7uEVlv0TIriiXY9A/preview"
+        "https://drive.google.com/file/d/1KCW1ZvI-Fnz4r-LQ7uEVlv0TIriiXY9A/preview",
+        "https://drive.google.com/file/d/1nhrVW-t5qCyF91G5HCYb9D0MUFqNwwkF/preview"
     ];
     
     let currentIndex = 0;

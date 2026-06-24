@@ -13,11 +13,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Playlist array placeholder para sa Productions gallery
     const playlist = [
+        "https://drive.google.com/file/d/1HZg69JW6p0XVvvY3kj5lry0nwie7a0u3/preview",
         "https://drive.google.com/file/d/1m9hebGPUcTl9iNqx4Yn-Iu1LxZvbMoMU/preview",
         "https://drive.google.com/file/d/1gHNo9UrqZD7M3IhQYT0MkQ-EP1JZsjqe/preview",
         "https://drive.google.com/file/d/13W6evBQVbqdbMfyIbvFTDMs1sMgux8kE/preview",
         "https://drive.google.com/file/d/1XKzGWZDFfoRjq4Gfhmi3EkHWtrvI15xw/preview",
         "https://drive.google.com/file/d/1NQ_KdXDSmjxaS9P5KIoq1xAkCFr6AaS3/preview",
+        "https://drive.google.com/file/d/1chRbTtBYUzJQbvxTEE-xW7mUO4KOlDRo/preview"
     ];
     
     let currentIndex = 0;
