@@ -17,7 +17,9 @@ document.addEventListener('DOMContentLoaded', () => {
         "https://drive.google.com/file/d/1yhIrovDimJ3iMtzyopm6IwDfwZU1T9s9/preview",
         "https://drive.google.com/file/d/1vp-mLwMT8L0WuS5_ojgT2oRn5zeMmF4a/preview",
         "https://drive.google.com/file/d/1Y41Yu79y6n49cSKLZgOP3F52LpMez1tr/preview",
-        "https://drive.google.com/file/d/10QuNyjEmPvt18_lXFoF87nzMH9qZKPlj/preview" 
+        "https://drive.google.com/file/d/10QuNyjEmPvt18_lXFoF87nzMH9qZKPlj/preview",
+        "https://drive.google.com/file/d/1JA3neQkGu2-ylXiaCgHbcnU0OynNXTiL/preview",
+        "https://drive.google.com/file/d/1hVTWqJVkZO82V2-_9e1qWNdaLrrUaV6O/preview"
     ];
     
     let currentIndex = 0;
