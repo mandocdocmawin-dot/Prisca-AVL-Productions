@@ -54,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (personalModalHeader) {
                 personalModalHeader.classList.remove('opacity-100', 'scale-100');
-                personalPersonalHeader.classList.add('opacity-0', 'scale-95');
+                personalModalHeader.classList.add('opacity-0', 'scale-95');
             }
             if (personalModalBody) {
                 personalModalBody.classList.remove('opacity-100', 'scale-100');
