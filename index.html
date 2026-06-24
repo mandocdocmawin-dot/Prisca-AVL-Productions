@@ -16,6 +16,7 @@
     <script src="./src/js/index.js" defer></script>
     <script src="./src/js/reels.js" defer></script>
     <script src="./src/js/documentaries.js" defer></script>
+    <script src="./src/js/productions.js" defer></script>
 
     <link rel="stylesheet" href="./src/css/global.css">
     <link rel="stylesheet" href="./src/css/index.css">
@@ -188,8 +189,8 @@
                         </div>
                     </div>
 
-                    <!-- Category 3: AVPs -->
-                    <div class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition">
+                    <!-- Category 3: Productions -->
+                    <div id="productionsTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A grand, technical stage..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8_UB9_qEkLGFNwnGsvX2ndckGRak6cqWkdbt158-w1uNb6dOj3mlpvzQdfrX_jxcsyQyqhYAkkytmN2T9pR9MGtVI17Az2wr9uoOvK9ZUh7Xirwv6a-G1PB50sW7DEkSRCSPHGXbvJuSawB2hMa0l8hIOiNIlvZfRdK4Jo4c_KbQcX6cdk4PAY0eCqtuF3k0QryD8n1GcA9uAQ3evf8tQ4I5n0r4iF9wggZHR2GHLb7DNsEkzCy66iWc06DP-AgBRWXRIR0tW1FY">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
                         <div class="absolute inset-0 p-6 flex flex-col justify-between">
@@ -201,8 +202,33 @@
                         </div>
                         <div class="hover-overlay absolute bottom-0 left-0 w-full p-6 bg-surface-container-high/90 backdrop-blur-md border-t border-primary/20 opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all duration-300">
                             <p class="font-body-md text-sm text-on-surface mb-3">Large-scale visuals for events, launches, and immersive brand experiences.</p>
-                            <button class="font-label-caps text-xs text-primary flex items-center gap-2 group/btn">
-                                Explore Collection <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+                            <button class="font-label-caps text-xs text-primary flex items-center gap-2 group/btn pointer-events-none">
+                                Watch Gallery <span class="material-symbols-outlined text-sm group-hover/btn:translate-x-1 transition-transform">play_arrow</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Productions Gallery Modal Container -->
+                    <div id="productionsModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-4 md:p-8">
+                        <div class="w-full max-w-[85vw] md:max-w-[70vw] flex justify-between items-center mb-3 opacity-0 scale-95 transition-all duration-500 delay-100" id="prodModalHeader">
+                            <div class="font-mono-technical text-sm text-primary-fixed tracking-wider flex items-center gap-2">
+                                <span class="material-symbols-outlined">movie</span>
+                                <span>// PRODUCTIONS GALLERY <span id="prodCounter" class="text-on-surface-variant ml-2">[ 1 / 3 ]</span></span>
+                            </div>
+                            <button id="closeProdModal" class="flex items-center gap-2 font-mono-technical text-mono-technical text-on-surface-variant hover:text-primary transition-colors bg-surface/40 border border-outline-variant/50 px-4 py-2 rounded-sm backdrop-blur-sm tracking-wider">
+                                <span class="hidden md:inline">// CLOSE GALLERY</span>
+                                <span class="material-symbols-outlined text-sm">close</span>
+                            </button>
+                        </div>
+                        <div class="w-full max-w-[85vw] md:max-w-[70vw] aspect-video relative z-10 border border-outline-variant/30 bg-black shadow-2xl opacity-0 scale-95 transition-all duration-500 delay-150 flex flex-col justify-between overflow-hidden rounded-sm" id="prodModalBody">
+                            <button id="prevProdBtn" class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 bg-surface/50 border border-outline-variant/50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md text-on-surface hover:text-primary hover:border-primary transition-all">
+                                <span class="material-symbols-outlined">chevron_left</span>
+                            </button>
+                            <div class="w-full flex-1 min-h-0 bg-black relative flex items-center justify-center">
+                                <iframe id="prodIframe" src="" class="w-full h-full border-0 absolute inset-0 z-10" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            </div>
+                            <button id="nextProdBtn" class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 bg-surface/50 border border-outline-variant/50 w-10 h-10 md:w-12 md:h-12 flex items-center justify-center rounded-full backdrop-blur-md text-on-surface hover:text-primary hover:border-primary transition-all">
+                                <span class="material-symbols-outlined">chevron_right</span>
                             </button>
                         </div>
                     </div>
