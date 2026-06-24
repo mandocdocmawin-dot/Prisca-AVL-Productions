@@ -12,6 +12,8 @@
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
     <script src="./src/js/tailwind-config.js"></script>
     <script src="./src/js/index.js" defer></script>
     <script src="./src/js/reels.js" defer></script>
@@ -39,10 +41,40 @@
             <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#arsenal">Arsenal</a>
             <a class="text-on-surface-variant dark:text-on-surface-variant hover:text-primary transition-colors duration-300" href="#contact">Contact</a>
         </nav>
-        <button class="bg-gradient-to-b from-primary to-surface-variant text-surface-container-lowest font-label-caps text-label-caps px-6 py-2 rounded-sm hover:brightness-125 transition-all chiseled-edge flex items-center gap-2">
-            Hire Me <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-        </button>
+        <div id="googleSignInWrapper" class="flex items-center gap-3">
+            <div id="g_id_signin"></div>
+            <div id="signedInUser" class="hidden items-center gap-2 bg-surface-container-high border border-outline-variant/30 rounded-sm px-3 py-1.5">
+                <img id="signedInAvatar" src="" alt="User avatar" class="w-6 h-6 rounded-full object-cover">
+                <span id="signedInName" class="font-label-caps text-label-caps text-on-surface"></span>
+            </div>
+        </div>
     </header>
+
+    <div id="g_id_onload"
+         data-client_id="585701016987-0b0mtf8l1ru7542s8mnrpijbopc9i01b.apps.googleusercontent.com"
+         data-callback="handleGoogleSignIn"
+         data-auto_select="false">
+    </div>
+
+    <script>
+        function handleGoogleSignIn(response) {
+            // Decode the JWT ID token to get basic profile info (name, email, picture)
+            const payload = JSON.parse(
+                decodeURIComponent(
+                    atob(response.credential.split('.')[1].replace(/-/g, '+').replace(/_/g, '/'))
+                        .split('').map(c => '%' + c.charCodeAt(0).toString(16).padStart(2, '0')).join('')
+                )
+            );
+
+            document.getElementById('signedInAvatar').src = payload.picture;
+            document.getElementById('signedInName').textContent = payload.name;
+
+            document.getElementById('g_id_signin').classList.add('hidden');
+            const signedInUser = document.getElementById('signedInUser');
+            signedInUser.classList.remove('hidden');
+            signedInUser.classList.add('flex');
+        }
+    </script>
 
     <main class="flex-grow flex flex-col w-full">
         <section class="w-full px-margin-mobile md:px-margin-desktop py-24 flex flex-col items-center justify-center text-center relative overflow-hidden" id="showreel">
