@@ -42,70 +42,70 @@
 
     <main class="flex-grow flex flex-col w-full">
         <section class="w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col items-center justify-center text-center relative overflow-hidden" id="showreel">
-    <h1 class="font-headline-xl text-3xl md:text-headline-xl text-primary-fixed mb-4 md:mb-6 tracking-widest relative z-10 px-4">
-        THE ART OF THE CUT
-    </h1>
-    <p class="font-mono-technical text-xs md:text-mono-technical text-outline max-w-2xl mb-8 md:mb-12 relative z-10 px-4">
-        // CINEMATIC POST-PRODUCTION // COLOR GRADING // MOTION DESIGN
-    </p>
-    
-    <div class="w-full max-w-6xl aspect-video bg-surface-container-high chiseled-edge relative group cursor-pointer overflow-hidden rounded-sm" id="videoTrigger">
-        <div class="absolute inset-0 bg-black/60 group-hover:bg-transparent transition-colors duration-500 z-20 flex items-center justify-center">
-            <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-primary/30 flex items-center justify-center backdrop-blur-md bg-surface/30 group-hover:scale-110 transition-transform duration-500">
-                <span class="material-symbols-outlined text-primary text-2xl md:text-4xl translate-x-[2px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
-            </div>
-        </div>
-        
-        <video class="w-full h-full object-cover absolute inset-0 opacity-40 group-hover:opacity-100 transition-all duration-700 ease-in-out z-10" autoplay muted loop playsinline>
-            <source src="./project-root/assets/videos/FEATURED_PROVINCE_INTRO.mp4" type="video/mp4">
-        </video>
-        
-        <div class="absolute bottom-0 left-0 w-full h-[2px] bg-outline-variant/30 z-30">
-            <div class="h-full bg-primary w-1/3"></div>
-        </div>
-    </div>
-
-    <!-- VIDEO MODAL CONTAINER -->
-    <div id="videoModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-2 sm:p-4 md:p-8">
-        
-        <!-- Modal Header (Close Button) -->
-        <div class="w-full max-w-[95vw] md:max-w-[70vw] flex justify-end mb-2 opacity-0 scale-95 transition-all duration-500 delay-100" id="modalHeader">
-            <button id="closeModal" class="flex items-center gap-1.5 font-mono-technical text-xs md:text-mono-technical text-on-surface-variant hover:text-primary transition-colors bg-surface/40 border border-outline-variant/50 px-3 py-1.5 md:px-4 md:py-2 rounded-sm backdrop-blur-sm tracking-wider">
-                <span>// CLOSE</span>
-                <span class="material-symbols-outlined text-sm">close</span>
-            </button>
-        </div>
-
-        <div class="w-full max-w-[95vw] md:max-w-[70vw] aspect-video max-h-[80vh] relative z-10 border border-outline-variant/30 bg-black shadow-2xl opacity-0 scale-95 transition-all duration-500 delay-150 flex flex-col justify-between overflow-hidden rounded-sm" id="modalBody">
-            <div class="w-full flex-1 min-h-0 bg-black relative flex items-center justify-center" id="modalVideoWrapper">
-                
-                <video id="modalVideo" class="w-full h-full absolute inset-0 z-10" playsinline>
-                    <source src="./project-root/assets/videos/FEATURED_PROVINCE_INTRO.mp4" type="video/mp4">
-                </video>
-
-                <!-- Custom Video Controls -->
-                <div id="modalVideoControls" class="absolute bottom-0 left-0 w-full z-20 px-4 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-2 transition-opacity duration-300 opacity-100">
-                    <!-- Progress Bar -->
-                    <input id="modalVideoProgress" type="range" min="0" max="100" value="0" step="0.1"
-                        class="w-full h-1 appearance-none bg-white/30 rounded-full cursor-pointer accent-primary"
-                        style="background: linear-gradient(to right, var(--color-primary, #fff) 0%, var(--color-primary, #fff) 0%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
-
-                    <!-- Controls Row -->
-                    <div class="flex items-center justify-between">
-                        <button id="modalPlayPause" class="flex items-center justify-center w-9 h-9 text-white hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-2xl" id="modalPlayPauseIcon" style="font-variation-settings: 'FILL' 1;">pause</span>
-                        </button>
-
-                        <button id="modalFullscreen" class="flex items-center justify-center w-9 h-9 text-white hover:text-primary transition-colors">
-                            <span class="material-symbols-outlined text-xl">fullscreen</span>
-                        </button>
+            <h1 class="font-headline-xl text-3xl md:text-headline-xl text-primary-fixed mb-4 md:mb-6 tracking-widest relative z-10 px-4">
+                THE ART OF THE CUT
+            </h1>
+            <p class="font-mono-technical text-xs md:text-mono-technical text-outline max-w-2xl mb-8 md:mb-12 relative z-10 px-4">
+                // CINEMATIC POST-PRODUCTION // COLOR GRADING // MOTION DESIGN
+            </p>
+            
+            <div class="w-full max-w-6xl aspect-video bg-surface-container-high chiseled-edge relative group cursor-pointer overflow-hidden rounded-sm" id="videoTrigger">
+                <div class="absolute inset-0 bg-black/60 group-hover:bg-transparent transition-colors duration-500 z-20 flex items-center justify-center">
+                    <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-primary/30 flex items-center justify-center backdrop-blur-md bg-surface/30 group-hover:scale-110 transition-transform duration-500">
+                        <span class="material-symbols-outlined text-primary text-2xl md:text-4xl translate-x-[2px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
                     </div>
                 </div>
-
+                
+                <video class="w-full h-full object-cover absolute inset-0 opacity-40 group-hover:opacity-100 transition-all duration-700 ease-in-out z-10" autoplay muted loop playsinline>
+                    <source src="./project-root/assets/videos/FEATURED_PROVINCE_INTRO.mp4" type="video/mp4">
+                </video>
+                
+                <div class="absolute bottom-0 left-0 w-full h-[2px] bg-outline-variant/30 z-30">
+                    <div class="h-full bg-primary w-1/3"></div>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+
+            <!-- VIDEO MODAL CONTAINER -->
+            <div id="videoModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-2 sm:p-4 md:p-8">
+                
+                <!-- Modal Header (Close Button) -->
+                <div class="w-full max-w-[95vw] md:max-w-[70vw] flex justify-end mb-2 opacity-0 scale-95 transition-all duration-500 delay-100" id="modalHeader">
+                    <button id="closeModal" class="flex items-center gap-1.5 font-mono-technical text-xs md:text-mono-technical text-on-surface-variant hover:text-primary transition-colors bg-surface/40 border border-outline-variant/50 px-3 py-1.5 md:px-4 md:py-2 rounded-sm backdrop-blur-sm tracking-wider">
+                        <span>// CLOSE</span>
+                        <span class="material-symbols-outlined text-sm">close</span>
+                    </button>
+                </div>
+
+                <div class="w-full max-w-[95vw] md:max-w-[70vw] aspect-video max-h-[80vh] relative z-10 border border-outline-variant/30 bg-black shadow-2xl opacity-0 scale-95 transition-all duration-500 delay-150 flex flex-col justify-between overflow-hidden rounded-sm" id="modalBody">
+                    <div class="w-full flex-1 min-h-0 bg-black relative flex items-center justify-center" id="modalVideoWrapper">
+                        
+                        <video id="modalVideo" class="w-full h-full absolute inset-0 z-10" playsinline>
+                            <source src="./project-root/assets/videos/FEATURED_PROVINCE_INTRO.mp4" type="video/mp4">
+                        </video>
+
+                        <!-- Custom Video Controls -->
+                        <div id="modalVideoControls" class="absolute bottom-0 left-0 w-full z-20 px-4 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-2 transition-opacity duration-300 opacity-100">
+                            <!-- Progress Bar -->
+                            <input id="modalVideoProgress" type="range" min="0" max="100" value="0" step="0.1"
+                                class="w-full h-1 appearance-none bg-white/30 rounded-full cursor-pointer accent-primary"
+                                style="background: linear-gradient(to right, var(--color-primary, #fff) 0%, var(--color-primary, #fff) 0%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
+
+                            <!-- Controls Row -->
+                            <div class="flex items-center justify-between">
+                                <button id="modalPlayPause" class="flex items-center justify-center w-9 h-9 text-white hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-2xl" id="modalPlayPauseIcon" style="font-variation-settings: 'FILL' 1;">pause</span>
+                                </button>
+
+                                <button id="modalFullscreen" class="flex items-center justify-center w-9 h-9 text-white hover:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-xl">fullscreen</span>
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <div class="w-full h-px bg-outline-variant/30"></div>
 
