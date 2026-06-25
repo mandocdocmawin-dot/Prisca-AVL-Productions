@@ -61,6 +61,9 @@ if (videoTrigger && videoModal) {
             closeModalFunction();
         }
     });
+
+    // Escape key: if in fullscreen, let the browser exit fullscreen first;
+    // otherwise close the modal.
     document.addEventListener('keydown', function(e) {
         if (e.key !== 'Escape') return;
         if (videoModal.classList.contains('pointer-events-none')) return;
@@ -81,17 +84,73 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeClasses = ['text-primary', 'dark:text-primary', 'border-b', 'border-primary', 'pb-1'];
     const inactiveClasses = ['text-on-surface-variant', 'dark:text-on-surface-variant'];
 
+    function setActiveLink(targetLink) {
+        navLinks.forEach(item => {
+            item.classList.remove(...activeClasses);
+            item.classList.add(...inactiveClasses);
+        });
+
+        if (targetLink) {
+            targetLink.classList.remove(...inactiveClasses);
+            targetLink.classList.add(...activeClasses);
+        }
+    }
+
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            navLinks.forEach(item => {
-                item.classList.remove(...activeClasses);
-                item.classList.add(...inactiveClasses);
-            });
-
-            this.classList.remove(...inactiveClasses);
-            this.classList.add(...activeClasses);
+            setActiveLink(this);
         });
     });
+
+    // ---- Scroll-spy: auto-update active nav link based on section in view ----
+    const sectionMap = []; // { id, section, link }
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href || !href.startsWith('#')) return;
+        const section = document.getElementById(href.slice(1));
+        if (section) sectionMap.push({ section, link });
+    });
+
+    if (sectionMap.length && 'IntersectionObserver' in window) {
+        let scrollSpyEnabled = true;
+
+        const observer = new IntersectionObserver((entries) => {
+            if (!scrollSpyEnabled) return;
+
+            // Pick the entry that is most visible in the viewport right now
+            let mostVisible = null;
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                if (!mostVisible || entry.intersectionRatio > mostVisible.intersectionRatio) {
+                    mostVisible = entry;
+                }
+            });
+
+            if (mostVisible) {
+                const match = sectionMap.find(item => item.section === mostVisible.target);
+                if (match) setActiveLink(match.link);
+            }
+        }, {
+            // Treat the section as "active" once it crosses the middle band of the viewport
+            rootMargin: '-30% 0px -60% 0px',
+            threshold: 0
+        });
+
+        sectionMap.forEach(item => observer.observe(item.section));
+
+        // Briefly disable scroll-spy right after a manual click so the clicked
+        // link stays highlighted during the smooth-scroll animation, instead of
+        // flickering to whatever section happens to be passing by.
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                scrollSpyEnabled = false;
+                clearTimeout(window.__scrollSpyResumeTimer);
+                window.__scrollSpyResumeTimer = setTimeout(() => {
+                    scrollSpyEnabled = true;
+                }, 800);
+            });
+        });
+    }
 });
 
 // Custom Modal Video Controls (play/pause, progress bar, fullscreen only)
