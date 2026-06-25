@@ -22,6 +22,12 @@ if (videoTrigger && videoModal) {
         if (modalVideo) {
             modalVideo.play();
         }
+
+        const modalControls = document.getElementById('modalVideoControls');
+        if (modalControls) {
+            modalControls.classList.remove('opacity-0', 'pointer-events-none');
+            modalControls.classList.add('opacity-100');
+        }
     });
 
     const closeModalFunction = function() {
@@ -175,5 +181,50 @@ document.addEventListener('DOMContentLoaded', () => {
             // Force a reflow so the browser re-evaluates hit-testing on the wrapper
             void videoWrapper.offsetHeight;
         }
+    });
+
+    // ---- Auto-hide controls + cursor on inactivity (like YouTube/Netflix) ----
+    const controlsBar = document.getElementById('modalVideoControls');
+    const HIDE_DELAY = 2500; // ms of inactivity before hiding
+    let idleTimer = null;
+
+    function showControls() {
+        if (controlsBar) {
+            controlsBar.classList.remove('opacity-0', 'pointer-events-none');
+            controlsBar.classList.add('opacity-100');
+        }
+        if (videoWrapper) videoWrapper.style.cursor = 'auto';
+    }
+
+    function hideControls() {
+        // Don't hide while paused — only auto-hide during active playback
+        if (video.paused) return;
+        if (controlsBar) {
+            controlsBar.classList.remove('opacity-100');
+            controlsBar.classList.add('opacity-0', 'pointer-events-none');
+        }
+        if (videoWrapper) videoWrapper.style.cursor = 'none';
+    }
+
+    function resetIdleTimer() {
+        showControls();
+        if (idleTimer) clearTimeout(idleTimer);
+        idleTimer = setTimeout(hideControls, HIDE_DELAY);
+    }
+
+    if (videoWrapper) {
+        videoWrapper.addEventListener('mousemove', resetIdleTimer);
+        videoWrapper.addEventListener('mouseenter', resetIdleTimer);
+        videoWrapper.addEventListener('mouseleave', function () {
+            if (idleTimer) clearTimeout(idleTimer);
+            hideControls();
+        });
+    }
+
+    // When playback starts, kick off the idle timer; when paused, always show controls
+    video.addEventListener('play', resetIdleTimer);
+    video.addEventListener('pause', function () {
+        if (idleTimer) clearTimeout(idleTimer);
+        showControls();
     });
 })();
