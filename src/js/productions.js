@@ -91,5 +91,11 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             updateGallery();
         });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key !== 'Escape') return;
+            if (prodModal.classList.contains('pointer-events-none')) return;
+            closeGallery();
+        });
     }
 });

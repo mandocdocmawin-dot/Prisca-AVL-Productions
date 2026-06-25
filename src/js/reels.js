@@ -91,5 +91,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             updateGallery();
         });
+
+        // 4. Escape key para isara ang modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key !== 'Escape') return;
+            if (galleryModal.classList.contains('pointer-events-none')) return;
+            closeGallery();
+        });
     }
 });
