@@ -61,6 +61,16 @@ if (videoTrigger && videoModal) {
             closeModalFunction();
         }
     });
+    document.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        if (videoModal.classList.contains('pointer-events-none')) return;
+
+        if (document.fullscreenElement) {
+            document.exitFullscreen();
+        } else {
+            closeModalFunction();
+        }
+    });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
