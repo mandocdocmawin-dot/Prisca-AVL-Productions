@@ -4,7 +4,20 @@ const modalHeader = document.getElementById('modalHeader');
 const modalBody = document.getElementById('modalBody');
 
 if (videoTrigger && videoModal) {
+    // Guards against the spam-click race condition:
+    // - isModalOpen: once the modal is open, ignore further clicks on the
+    //   trigger so the open animation/play() doesn't keep re-firing.
+    // - modalCloseRequested: if close() is called while a play() Promise is
+    //   still pending, we remember that and pause again once play() resolves,
+    //   instead of letting a "late" play() silently resume the video after close.
+    let isModalOpen = false;
+    let modalCloseRequested = false;
+
     videoTrigger.addEventListener('click', function() {
+        if (isModalOpen) return; // already open — ignore repeat/spam clicks
+        isModalOpen = true;
+        modalCloseRequested = false;
+
         videoModal.classList.remove('opacity-0', 'pointer-events-none');
         videoModal.classList.add('opacity-100', 'pointer-events-auto');
         
@@ -20,7 +33,16 @@ if (videoTrigger && videoModal) {
 
         const modalVideo = videoModal.querySelector('video');
         if (modalVideo) {
-            modalVideo.play();
+            const playPromise = modalVideo.play();
+            // play() is async; if close() ran before it resolved, undo it.
+            if (playPromise && typeof playPromise.then === 'function') {
+                playPromise.then(() => {
+                    if (modalCloseRequested) {
+                        modalVideo.pause();
+                        modalVideo.currentTime = 0;
+                    }
+                }).catch(() => {});
+            }
         }
 
         const modalControls = document.getElementById('modalVideoControls');
@@ -31,6 +53,10 @@ if (videoTrigger && videoModal) {
     });
 
     const closeModalFunction = function() {
+        if (!isModalOpen) return; // already closed — ignore repeat/spam clicks
+        isModalOpen = false;
+        modalCloseRequested = true;
+
         videoModal.classList.remove('opacity-100', 'pointer-events-auto');
         videoModal.classList.add('opacity-0', 'pointer-events-none');
         
