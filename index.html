@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
+<html class="dark scroll-smooth" lang="en">
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -25,7 +25,7 @@
 </head>
 <body class="bg-background text-on-surface font-body-md min-h-screen flex flex-col antialiased selection:bg-primary-container selection:text-on-primary-container">
     
-    <header class="w-full top-0 sticky z-50 bg-surface/7    0 dark:bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 mx-auto transition-all duration-300">
+    <header class="w-full top-0 sticky z-50 bg-surface/70 dark:bg-surface/70 backdrop-blur-xl border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 mx-auto transition-all duration-300">
         <div class="flex items-center gap-4 hover:opacity-80 transition-opacity cursor-pointer">
             <img alt="Prisca AVL Productions Logo" class="h-8 w-auto object-contain" src="./project-root/assets/images/LOGO-TRANSPARENT-01.png">
             <span class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg tracking-tighter text-primary-fixed uppercase hidden md:block">
@@ -42,14 +42,14 @@
 
     <main class="flex-grow flex flex-col w-full">
         <section class="w-full px-margin-mobile md:px-margin-desktop py-12 md:py-24 flex flex-col items-center justify-center text-center relative overflow-hidden" id="showreel">
-            <h1 class="font-headline-xl text-3xl md:text-headline-xl text-primary-fixed mb-4 md:mb-6 tracking-widest relative z-10 px-4">
+           <h1 class="font-headline-xl text-3xl md:text-headline-xl text-primary-fixed mb-4 md:mb-6 tracking-widest relative z-10 px-4 animate-on-load delay-100">
                 THE ART OF THE CUT
             </h1>
-            <p class="font-mono-technical text-xs md:text-mono-technical text-outline max-w-2xl mb-8 md:mb-12 relative z-10 px-4">
+            <p class="font-mono-technical text-xs md:text-mono-technical text-outline max-w-2xl mb-8 md:mb-12 relative z-10 px-4 animate-on-load delay-300">
                 // CINEMATIC POST-PRODUCTION // COLOR GRADING // MOTION DESIGN
             </p>
             
-            <div class="w-full max-w-6xl aspect-video bg-surface-container-high chiseled-edge relative group cursor-pointer overflow-hidden rounded-sm" id="videoTrigger">
+            <div class="w-full max-w-6xl aspect-video bg-surface-container-high chiseled-edge relative group cursor-pointer overflow-hidden rounded-sm animate-on-load delay-500" id="videoTrigger">
                 <div class="absolute inset-0 bg-black/60 group-hover:bg-transparent transition-colors duration-500 z-20 flex items-center justify-center">
                     <div class="w-14 h-14 md:w-20 md:h-20 rounded-full border border-primary/30 flex items-center justify-center backdrop-blur-md bg-surface/30 group-hover:scale-110 transition-transform duration-500">
                         <span class="material-symbols-outlined text-primary text-2xl md:text-4xl translate-x-[2px]" data-weight="fill" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
@@ -65,10 +65,8 @@
                 </div>
             </div>
 
-            <!-- VIDEO MODAL CONTAINER -->
             <div id="videoModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-2 sm:p-4 md:p-8">
                 
-                <!-- Modal Header (Close Button) -->
                 <div class="w-full max-w-[95vw] md:max-w-[70vw] flex justify-end mb-2 opacity-0 scale-95 transition-all duration-500 delay-100" id="modalHeader">
                     <button id="closeModal" class="flex items-center gap-1.5 font-mono-technical text-xs md:text-mono-technical text-on-surface-variant hover:text-primary transition-colors bg-surface/40 border border-outline-variant/50 px-3 py-1.5 md:px-4 md:py-2 rounded-sm backdrop-blur-sm tracking-wider">
                         <span>// CLOSE</span>
@@ -83,14 +81,11 @@
                             <source src="./project-root/assets/videos/FEATURED_PROVINCE_INTRO.mp4" type="video/mp4">
                         </video>
 
-                        <!-- Custom Video Controls -->
                         <div id="modalVideoControls" class="absolute bottom-0 left-0 w-full z-20 px-4 pb-3 pt-8 bg-gradient-to-t from-black/80 to-transparent flex flex-col gap-2 transition-opacity duration-300 opacity-100">
-                            <!-- Progress Bar -->
                             <input id="modalVideoProgress" type="range" min="0" max="100" value="0" step="0.1"
                                 class="w-full h-1 appearance-none bg-white/30 rounded-full cursor-pointer accent-primary"
                                 style="background: linear-gradient(to right, var(--color-primary, #fff) 0%, var(--color-primary, #fff) 0%, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0.3) 100%);">
 
-                            <!-- Controls Row -->
                             <div class="flex items-center justify-between">
                                 <button id="modalPlayPause" class="flex items-center justify-center w-9 h-9 text-white hover:text-primary transition-colors">
                                     <span class="material-symbols-outlined text-2xl" id="modalPlayPauseIcon" style="font-variation-settings: 'FILL' 1;">pause</span>
@@ -110,17 +105,14 @@
         <div class="w-full h-px bg-outline-variant/30"></div>
 
         <div id="portfolio" class="w-full bg-surface-dim pt-gutter">
-            <!-- Archives & Categories Section (Pinatamaan at Pinagaan ang Sukat) -->
             <section class="px-margin-mobile md:px-margin-desktop pb-24">
-                <div class="flex justify-between items-end mb-8 border-b border-outline-variant/30 pb-4">
+                <div class="flex justify-between items-end mb-8 border-b border-outline-variant/30 pb-4 reveal">
                     <h2 class="font-headline-lg text-headline-lg text-primary uppercase tracking-tight">Archives & Categories</h2>
                     <span class="font-mono-technical text-mono-technical text-on-surface-variant">CATALOGUE_V4.0</span>
                 </div>
                 
-                <!-- Binago ang aspect mula 4/5 patungong modernong 3/2 or 16/10 (Mas maikli at mas cinematic) -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-panel-gap bg-outline-variant/30 technical-border">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-panel-gap bg-outline-variant/30 technical-border reveal">
                     
-                    <!-- Category 1: Cinematic Reels -->
                     <div id="reelsTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A montage of vibrant..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIRf_V6C-OgjOKVcz612DspbJR0Ex6wqp4ybtaWYivNDszcs3lFs0Qk8lWdS0RXeQO8IS-MK7HmFOmtW1FZTsODTeW8AZmoH9FXEcJITYDxmA9U6hMPi79TTXrYyVQ337Sl6xyHImtV4T1-nNGP37xUEIuIryfcfjmBmgwbvms1sp6XKZwRW9P1MbAejvsKN0zgnVPxUziNp3OfQt21DfrjumrRuOr976etaldIV6i_t0hpYaIiuQ9boUxEWzodQNxUMDofDQ4wr0">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
@@ -163,7 +155,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 2: Documentaries -->
                     <div id="documentariesTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A profound, atmospheric..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuZCe7o-oHCJ2Sk2kwaSBUZgaUnw5AGt-eqUgWigMSjJpkthAd5Y6NhLrD95M6GeVnrvfYGfG-Fq1VylhOUJK6Jw8wJ55qHaHoOdWcyFWc3GYFBE6O5TdDULUND7-58pzR1mN-X_w9mJBX7sJwIjxcRelJ2yu5vgcU5Fzydwc0YAVaSwHlpeUIwzt1aBit7jQ4m2B51-dEsVfo67Dr2sSJi-ebNcCt7zMmsGgsRCpLrP3dPOYOoPV-m9JkmTlSGSIBeOz287AB5nw">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
@@ -206,7 +197,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 3: Productions -->
                     <div id="productionsTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A grand, technical stage..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB8_UB9_qEkLGFNwnGsvX2ndckGRak6cqWkdbt158-w1uNb6dOj3mlpvzQdfrX_jxcsyQyqhYAkkytmN2T9pR9MGtVI17Az2wr9uoOvK9ZUh7Xirwv6a-G1PB50sW7DEkSRCSPHGXbvJuSawB2hMa0l8hIOiNIlvZfRdK4Jo4c_KbQcX6cdk4PAY0eCqtuF3k0QryD8n1GcA9uAQ3evf8tQ4I5n0r4iF9wggZHR2GHLb7DNsEkzCy66iWc06DP-AgBRWXRIR0tW1FY">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
@@ -225,7 +215,6 @@
                         </div>
                     </div>
 
-                    <!-- Productions Gallery Modal Container -->
                     <div id="productionsModal" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-surface-container-lowest/90 backdrop-blur-xl opacity-0 pointer-events-none transition-all duration-500 p-4 md:p-8">
                         <div class="w-full max-w-[85vw] md:max-w-[70vw] flex justify-between items-center mb-3 opacity-0 scale-95 transition-all duration-500 delay-100" id="prodModalHeader">
                             <div class="font-mono-technical text-sm text-primary-fixed tracking-wider flex items-center gap-2">
@@ -250,7 +239,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 4: Commercial Spots -->
                     <div id="commercialsTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 border-t border-outline-variant/20 cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A sleek, macro shot..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBJJ_NBbmBHrrAVL2WIbB0Gsh9VsBoHM6nyG9v33oePKp_X74ppH8e32hsc4whtkqwaLa4IaKk8YXID9ArStDJhFiyVMZBP7oyVAHrTxw73BgAgDy7tnc9xUWK6Kfrfl7574xyNGtHSR8JuhIKF6Q94GrHZ3nGMOUwRp9wuAaCeq-lSgo5eTYF7Z6YZmTwnmrrqHTgY83eF4ByrmRdb_lUPFXdsmZ0SnAQ9ZzhMxIY48F-WuWkC2fJDswMBVnU-AxqMJSWU3ByTfVA">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
@@ -293,7 +281,6 @@
                         </div>
                     </div>
 
-                    <!-- Category 5: Motion Design -->
                     <div id="personalTrigger" class="group relative bg-surface overflow-hidden aspect-[3/2] panel-transition border-r border-outline-variant/20 border-t border-outline-variant/20 cursor-pointer">
                         <img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Abstract 3D motion..." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCSEExgVbODjOGoRTLHzRldCKQeUE2eR5IzRga1Ki4yQjnW_huzbKnRYDddrfvEuTCaIznZJ1PWKvZEDdEbraq2RL8IDAKFNFm49zkDN7WEbPsNRr00wJU5CU3HygwcXc64nbuHlL7Dt7R5SvAqXYo-O88_8V4pEMUDU9Al371lehJibJbkk0y-mwva1KLrUSX8a67NJR39NYJB6dGue9mwDdcFEd_3Sk6_PG70-tGC80E7MClbHomYSWykXgW7pWKoOVvWitCkdUs">
                         <div class="absolute inset-0 bg-background/40 group-hover:bg-transparent transition-colors"></div>
@@ -338,13 +325,11 @@
                 </div>
             </section>
 
-            <!-- TECHNICAL ARSENAL -->
-        <section id="arsenal" class="px-margin-mobile md:px-margin-desktop py-24">
+        <section id="arsenal" class="px-margin-mobile md:px-margin-desktop py-24 reveal">
             <div class="flex items-center gap-4 mb-12">
                 <h2 class="font-label-caps text-label-caps text-on-surface-variant uppercase tracking-[0.4em]">The Arsenal</h2>
                 <div class="flex-grow h-[1px] bg-outline-variant/30"></div>
             </div>
-            <!-- Updated to a 3-column grid to hold the exactly 3 remaining tools -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-panel-gap bg-outline-variant/30 technical-border">
                 <div class="bg-surface p-12 flex flex-col items-center justify-center grayscale hover:grayscale-0 transition-all cursor-default">
                     <img class="h-12 mb-4" data-alt="The Adobe Premiere Pro software logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBB4sDu-t0sP1y5tXGfmoEfad4RsZslWu0MkRIXXou6a5Er2BKL_sXvLTuKugQdff509PvloyOU0bTIlZg7eXYLN1QefOuM_bauLTMc8TuYGl9VqaQ_c0FR7bDO6taEARLcBCjEHcRpXuW8VTqpIVw_EMxCxEQ2YQ7jhmymzCButUScXsg91IibNH-ziKAWykiYfTmuD3mpHcq-SYs9F4rqr1y4MuQDSbwe1GXIR7sWGTCFIOiUo2M8DNuqWdcbjA9uxZB3NzTAyo8">
@@ -361,8 +346,7 @@
             </div>
         </section>
 
-        <!-- PRISCA AVL PRODUCTIONS PERSPECTIVE -->
-            <section class="px-margin-mobile md:px-margin-desktop mb-24 overflow-hidden">
+            <section class="px-margin-mobile md:px-margin-desktop mb-24 overflow-hidden reveal">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
                     <div>
                         <h2 class="font-headline-lg text-headline-lg text-primary uppercase mb-8">Our <br>Perspective</h2>
@@ -384,7 +368,6 @@
                         </div>
                     </div>
                     
-                    <!-- FIXED CONTAINER: Changed aspect-square to aspect-video & max-h to balance the vertical sizing -->
                     <div class="technical-border aspect-video max-h-[480px] w-full relative bg-surface-container overflow-hidden hidden md:block">
                         <img class="w-full h-full object-cover" data-alt="A top-down, high-fashion aesthetic photo of a professional editing desk." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBql_cHJ-yquidToctFkUHJVypyjcOIjuTwX90oR7dihL8Q7LyPdOf6hPylFq2wdwtB-Mo-uk_nEY9z819yPEXYl35PaC3Ol6HsMP89zDEQN_WuOKY7dcxxaVbIZjWsciMWHWUjyim4EHHMVAixxEkPa6jldXgojMdcR8_eUPBKHjQl-_46HThqG68nRIvWbo9VZKPj06KQorTypRsemIsB3yy3vXHQxXiSb6AVWuWL3kKRRAPM_0eiAGuqO2wE1NhiySbOaW-zXwc">
                         <div class="absolute inset-0 bg-primary/5 mix-blend-overlay"></div>
@@ -394,17 +377,13 @@
         </div>
     </main>
 
-    <!-- CONTACT & BOOKING FOOTER -->
-    <footer id="contact" class="bg-surface pt-24 pb-12 border-t border-outline-variant/30">
+    <footer id="contact" class="bg-surface pt-24 pb-12 border-t border-outline-variant/30 reveal">
         <div class="px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-2 gap-16 mb-24 items-center">
-            <!-- Left Side: Contact Information -->
             <div>
                 <h2 class="font-headline-xl text-headline-xl text-primary uppercase tracking-tighter mb-6">Initiate <br><span class="metallic-text">Production</span></h2>
                 <p class="font-body-md text-body-md text-on-surface-variant mb-8">Ready to elevate your project to cinematic standards? Let's discuss your vision and technical requirements.</p>
                 
-                <!-- Direct Contact Links -->
                 <div class="space-y-6">
-                    <!-- Gmail -->
                     <a href="mailto:priscaavl6@gmail.com" class="flex items-center gap-4 group cursor-pointer w-fit">
                         <div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-low group-hover:border-primary group-hover:bg-primary/10 transition-all">
                             <span class="material-symbols-outlined text-primary text-sm">mail</span>
@@ -412,7 +391,6 @@
                         <span class="font-mono-technical text-mono-technical text-on-surface uppercase tracking-wider group-hover:text-primary transition-colors">priscaavl6@gmail.com</span>
                     </a>
                     
-                    <!-- Phone Number: Dito -->
                     <a href="tel:+639240601605" class="flex items-center gap-4 group cursor-pointer w-fit">
                         <div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-low group-hover:border-primary group-hover:bg-primary/10 transition-all">
                             <span class="material-symbols-outlined text-primary text-sm">call</span>
@@ -420,7 +398,6 @@
                         <span class="font-mono-technical text-mono-technical text-on-surface uppercase tracking-wider group-hover:text-primary transition-colors">0924 060 1605 (Dito)</span>
                     </a>
 
-                    <!-- Phone Number: Smart -->
                     <a href="tel:+639491609720" class="flex items-center gap-4 group cursor-pointer w-fit">
                         <div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-low group-hover:border-primary group-hover:bg-primary/10 transition-all">
                             <span class="material-symbols-outlined text-primary text-sm">call</span>
@@ -428,7 +405,6 @@
                         <span class="font-mono-technical text-mono-technical text-on-surface uppercase tracking-wider group-hover:text-primary transition-colors">0949 160 9720 (Smart)</span>
                     </a>
 
-                    <!-- Phone Number: Globe -->
                     <a href="tel:+639560161345" class="flex items-center gap-4 group cursor-pointer w-fit">
                         <div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-low group-hover:border-primary group-hover:bg-primary/10 transition-all">
                             <span class="material-symbols-outlined text-primary text-sm">call</span>
@@ -436,7 +412,6 @@
                         <span class="font-mono-technical text-mono-technical text-on-surface uppercase tracking-wider group-hover:text-primary transition-colors">0956 016 1345 (Globe)</span>
                     </a>
                     
-                    <!-- Facebook -->
                     <a href="https://www.facebook.com/profile.php?id=61590515793162" target="_blank" class="flex items-center gap-4 group cursor-pointer w-fit">
                         <div class="w-10 h-10 rounded-full border border-outline-variant/30 flex items-center justify-center bg-surface-container-low group-hover:border-primary group-hover:bg-primary/10 transition-all overflow-hidden">
                             <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -448,9 +423,7 @@
                 </div>
             </div>
             
-            <!-- Right Side: Logo Showcase -->
             <div class="flex items-center justify-center p-8 relative">
-                <!-- Subtle background glow for the logo -->
                 <div class="absolute inset-0 bg-primary/5 blur-3xl rounded-full scale-75"></div>
                 <img 
                     src="./project-root/assets/images/LOGO-TRANSPARENT-01.png" 
@@ -460,7 +433,6 @@
             </div>
         </div>
 
-        <!-- Footer Bottom Links & Copyright -->
         <div class="px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8 border-t border-outline-variant/10 pt-12">
             <div class="font-headline-lg text-headline-lg text-primary-fixed uppercase tracking-tighter">
                 PRISCA AVL PRODUCTIONS

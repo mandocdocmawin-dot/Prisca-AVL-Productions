@@ -1,7 +1,3 @@
-/* css/index.css */
-
-/* Custom Utilities para sa Homepage */
-
 .chiseled-edge {
     box-shadow: inset 1px 1px 0px 0px rgba(255,255,255,0.1);
 }
@@ -15,3 +11,37 @@
 .bento-item {
     background-color: #131313; 
 }
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Animation para sa pag-load ng page */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Base class para sa mga aangat pagka-load */
+.animate-on-load {
+    opacity: 0; /* Nakatago sa simula */
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+/* Mga delays para sunod-sunod ang paglabas */
+.delay-100 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.5s; }
+.delay-500 { animation-delay: 0.8s; }

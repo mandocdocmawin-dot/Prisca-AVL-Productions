@@ -4,17 +4,11 @@ const modalHeader = document.getElementById('modalHeader');
 const modalBody = document.getElementById('modalBody');
 
 if (videoTrigger && videoModal) {
-    // Guards against the spam-click race condition:
-    // - isModalOpen: once the modal is open, ignore further clicks on the
-    //   trigger so the open animation/play() doesn't keep re-firing.
-    // - modalCloseRequested: if close() is called while a play() Promise is
-    //   still pending, we remember that and pause again once play() resolves,
-    //   instead of letting a "late" play() silently resume the video after close.
     let isModalOpen = false;
     let modalCloseRequested = false;
 
     videoTrigger.addEventListener('click', function() {
-        if (isModalOpen) return; // already open — ignore repeat/spam clicks
+        if (isModalOpen) return; 
         isModalOpen = true;
         modalCloseRequested = false;
 
@@ -34,7 +28,6 @@ if (videoTrigger && videoModal) {
         const modalVideo = videoModal.querySelector('video');
         if (modalVideo) {
             const playPromise = modalVideo.play();
-            // play() is async; if close() ran before it resolved, undo it.
             if (playPromise && typeof playPromise.then === 'function') {
                 playPromise.then(() => {
                     if (modalCloseRequested) {
@@ -53,7 +46,7 @@ if (videoTrigger && videoModal) {
     });
 
     const closeModalFunction = function() {
-        if (!isModalOpen) return; // already closed — ignore repeat/spam clicks
+        if (!isModalOpen) return; 
         isModalOpen = false;
         modalCloseRequested = true;
 
@@ -88,8 +81,6 @@ if (videoTrigger && videoModal) {
         }
     });
 
-    // Escape key: if in fullscreen, let the browser exit fullscreen first;
-    // otherwise close the modal.
     document.addEventListener('keydown', function(e) {
         if (e.key !== 'Escape') return;
         if (videoModal.classList.contains('pointer-events-none')) return;
@@ -128,8 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ---- Scroll-spy: auto-update active nav link based on section in view ----
-    const sectionMap = []; // { id, section, link }
+    const sectionMap = []; 
     navLinks.forEach(link => {
         const href = link.getAttribute('href');
         if (!href || !href.startsWith('#')) return;
@@ -143,7 +133,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const observer = new IntersectionObserver((entries) => {
             if (!scrollSpyEnabled) return;
 
-            // Pick the entry that is most visible in the viewport right now
             let mostVisible = null;
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
@@ -157,16 +146,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (match) setActiveLink(match.link);
             }
         }, {
-            // Treat the section as "active" once it crosses the middle band of the viewport
             rootMargin: '-30% 0px -60% 0px',
             threshold: 0
         });
 
         sectionMap.forEach(item => observer.observe(item.section));
 
-        // Briefly disable scroll-spy right after a manual click so the clicked
-        // link stays highlighted during the smooth-scroll animation, instead of
-        // flickering to whatever section happens to be passing by.
         navLinks.forEach(link => {
             link.addEventListener('click', function() {
                 scrollSpyEnabled = false;
@@ -177,9 +162,25 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            } else {
+                entry.target.classList.remove('active');
+            }
+        });
+    }, {
+        threshold: 0.15 
+    });
+
+    reveals.forEach(reveal => {
+        revealObserver.observe(reveal);
+    });
 });
 
-// Custom Modal Video Controls (play/pause, progress bar, fullscreen only)
 (function () {
     const video = document.getElementById('modalVideo');
     const playPauseBtn = document.getElementById('modalPlayPause');
@@ -210,7 +211,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Click directly on the video to toggle play/pause
     video.addEventListener('click', function (e) {
         e.stopPropagation();
         togglePlay();
@@ -222,12 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
         } else if (videoWrapper && videoWrapper.requestFullscreen) {
             videoWrapper.requestFullscreen();
         } else if (video.webkitEnterFullscreen) {
-            // iOS Safari fallback
             video.webkitEnterFullscreen();
         }
     }
 
-    // Spacebar toggles play/pause, "F" toggles fullscreen, when the modal is open
     document.addEventListener('keydown', function (e) {
         if (!videoModalEl || videoModalEl.classList.contains('pointer-events-none')) return;
         if (e.code === 'Space' || e.key === ' ') {
@@ -267,20 +265,15 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Ensure controls remain clickable/interactive after exiting fullscreen.
-    // Some browsers leave stale pointer-events/z-index state on the wrapper
-    // after the fullscreen element is removed from the top layer.
     document.addEventListener('fullscreenchange', function () {
         if (!document.fullscreenElement && videoWrapper) {
             videoWrapper.style.pointerEvents = 'auto';
-            // Force a reflow so the browser re-evaluates hit-testing on the wrapper
             void videoWrapper.offsetHeight;
         }
     });
 
-    // ---- Auto-hide controls + cursor on inactivity (like YouTube/Netflix) ----
     const controlsBar = document.getElementById('modalVideoControls');
-    const HIDE_DELAY = 2500; // ms of inactivity before hiding
+    const HIDE_DELAY = 2500; 
     let idleTimer = null;
 
     function showControls() {
@@ -292,7 +285,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function hideControls() {
-        // Don't hide while paused — only auto-hide during active playback
         if (video.paused) return;
         if (controlsBar) {
             controlsBar.classList.remove('opacity-100');
@@ -316,7 +308,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // When playback starts, kick off the idle timer; when paused, always show controls
     video.addEventListener('play', resetIdleTimer);
     video.addEventListener('pause', function () {
         if (idleTimer) clearTimeout(idleTimer);
